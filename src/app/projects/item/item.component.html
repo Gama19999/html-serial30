@@ -1,0 +1,8 @@
+<div class="item grid fit pointer">
+  <span class="item-title s30bg fo c1 r1">{{ data.title }}</span>
+  <span class="item-description ff c1 r2">{{ data.description }}</span>
+  <span class="item-version ff c1 r3 external" (click)="gotoProject(data.link)">
+    {{ data.version }}
+  </span>
+  <img src="{{ data.image }}" alt="{{ data.title }}-logo" class="c2 item-img external" (click)="gotoProject(data.link)" />
+</div>

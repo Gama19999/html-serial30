@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import { WelcomeMenuService } from '../services/welcome-menu.service';
+import { MenuService } from '../services/menu.service';
 import { ShortcutsComponent } from '../shortcuts/shortcuts.component';
 
 @Component({
@@ -8,13 +9,18 @@ import { ShortcutsComponent } from '../shortcuts/shortcuts.component';
   templateUrl: './welcome.component.html',
   styleUrl: './welcome.component.css'
 })
-export class WelcomeComponent implements AfterViewInit {
+export class WelcomeComponent implements AfterViewInit, OnInit, OnDestroy {
   @ViewChild('wAppName') private wAppName!: ElementRef;
   @ViewChild('wShadowCard') private wShadowCard!: ElementRef;
   @ViewChild('wMenu') private wMenu!: ElementRef;
+  private menuOpenSubs!: Subscription;
   menu: any;
 
-  constructor(private wMenuService: WelcomeMenuService) {}
+  constructor(private menuService: MenuService) {}
+
+  ngOnInit(): void {
+    this.menuOpenSubs = this.menuService.opened.subscribe(value => this.menu = value ? ShortcutsComponent : undefined);
+  }
 
   ngAfterViewInit(): void {
     this.wAppName.nativeElement.addEventListener('mousemove', (event: any)=> {
@@ -36,8 +42,10 @@ export class WelcomeComponent implements AfterViewInit {
 
   toggleMenu() {
     const menuBtn = <HTMLDivElement> this.wMenu.nativeElement;
-    this.wMenuService.toggleMenu(menuBtn);
-    this.menu = this.wMenuService.isOpen ? undefined : ShortcutsComponent;
+    this.menuService.toggleMenu(menuBtn);
   }
 
+  ngOnDestroy(): void {
+    if (this.menuOpenSubs) this.menuOpenSubs.unsubscribe();
+  }
 }

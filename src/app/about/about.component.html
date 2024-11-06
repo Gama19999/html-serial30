@@ -1,0 +1,6 @@
+<section class="full grid about">
+  <i class="menu control pi pi-bars c1 r1 pointer" #aMenu (click)="toggleMenu()"></i>
+  <span class="page-title c1 r1 ff s30bg">afterbeta</span>
+  <app-s30logo></app-s30logo>
+  <ng-container *ngComponentOutlet="menu; inputs: {menuElem: aMenu}"></ng-container>
+</section>

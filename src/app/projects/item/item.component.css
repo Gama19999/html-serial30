@@ -1,0 +1,42 @@
+.item {
+  background-color: rgba(220, 220, 220, 0.7);
+  border-radius: 10px;
+  padding: 1rem;
+  grid-template-columns: 1fr 20%;
+  grid-template-rows: 20% 1fr 15%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.05s ease;
+}
+.item:active { transform: scale(0.99); }
+.item-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 0.2rem;
+  line-height: 0.7;
+  background-clip: text;
+  color: transparent;
+}
+.item-description {
+  padding-top: 0.7rem;
+  text-align: justify;
+}
+.item-description,
+.item-version {
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+}
+@media screen and (max-width: 1024px) { /* CSS FOR SMALL SCREENS */
+  .item-title { font-size: 1.6rem; }
+  .item-description,
+  .item-version {
+    font-size: 0.95rem;
+    letter-spacing: 0;
+  }
+  .item-version { padding-top: 0.4rem; }
+}
+.item-img {
+  grid-row: 1 / 4;
+  width: 50%;
+  justify-self: center;
+  align-self: center;
+}

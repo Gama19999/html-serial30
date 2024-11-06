@@ -32,7 +32,7 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
-                "glob": "**/icon.webp",
+                "glob": "**/serial30.webp",
                 "input": "src/assets/images/icon/",
                 "output": "/media/"
               }
