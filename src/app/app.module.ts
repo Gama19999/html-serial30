@@ -4,11 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcolme/welcome.component';
+import { ShortcutsComponent } from './shortcuts/shortcuts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    ShortcutsComponent
   ],
   imports: [
     BrowserModule,

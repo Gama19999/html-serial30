@@ -1,15 +1,13 @@
 .welcome {
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, 1fr);
+  transition: box-shadow 1.5s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .welcome-menu {
   justify-self: left;
   align-self: start;
   margin: 2rem 0 0 2rem;
-  font-size: 1.3rem;
-  padding: 0.5rem;
-  border-radius: 50%;
-  transition: box-shadow 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+  z-index: 10;
 }
 .welcome-txt, .welcome-owner {
   font-size: 2.5rem;
@@ -47,7 +45,6 @@
   transition: opacity 1.25s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 @media screen and (min-width: 1025px) { /* EFFECTS FOR WIDE SCREENS */
-  .welcome-menu:hover { box-shadow: 0 0 75px rgba(0, 0, 0, 0.2), 0 5px 20px rgba(0, 0, 0, 0.2); }
   .welcome-app-name:hover {
     font-size: 6.5rem;
     width: 60%;

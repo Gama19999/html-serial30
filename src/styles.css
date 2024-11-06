@@ -10,9 +10,40 @@
 }
 html, body { height: 100%; }
 
+/***** COMPONENTS *****/
+app-shortcuts {
+  z-index: 5;
+  width: 20%;
+  height: 100%;
+  grid-column: 1;
+  grid-row: 1 / 4;
+  justify-self: left;
+}
+
 /***** CLASSES *****/
+.fit {
+  width: fit-content;
+  height: fit-content;
+}
 .pointer { cursor: pointer; }
 .nopacity { opacity: 0; }
+.bg-modal { box-shadow: inset 0 0 20px 1000px rgba(0,0,0,0.8) !important; }
+.hidden { display: none; }
+.control {
+  font-size: 1.3rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background-color: white;
+  transition: box-shadow 1s cubic-bezier(0.215, 0.61, 0.355, 1), transform 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+@media screen and (min-width: 1025px) { /* EFFECTS FOR WIDE SCREENS */
+  .control:hover { box-shadow: 0 0 75px rgba(0, 0, 0, 0.2), 0 5px 20px rgba(0, 0, 0, 0.2); }
+  .bg-modal > .control:hover,
+  .bg-modal app-shortcuts nav .control:hover {
+    box-shadow: none;
+    transform: scale(1.2);
+  }
+}
 
 /***** DISPLAY *****/
 .flex {
@@ -46,6 +77,8 @@ html, body { height: 100%; }
 .r1 { grid-row: 1; }
 .r2 { grid-row: 2; }
 .r3 { grid-row: 3; }
+.r4 { grid-row: 4; }
+.r5 { grid-row: 5; }
 
 /***** FONTS *****/
 @font-face {
