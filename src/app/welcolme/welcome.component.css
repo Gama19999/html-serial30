@@ -1,0 +1,107 @@
+.welcome {
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+}
+.welcome-menu {
+  justify-self: left;
+  align-self: start;
+  margin: 2rem 0 0 2rem;
+  font-size: 1.3rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: box-shadow 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.welcome-txt, .welcome-owner {
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 0.5rem;
+}
+.welcome-bg-color-card {
+  width: 70%;
+  height: 55%;
+  background: linear-gradient(230deg, #a24bcf, #4b79cf, #4bc5cf);
+  background-size: 400% 400%;
+  animation: random 3.5s cubic-bezier(0.46, 0.03, 0.52, 0.96) infinite;
+}
+@keyframes random {
+  0% { background-position: 83% 0; }
+  50% { background-position: 18% 100%; }
+  100% { background-position: 83% 0; }
+}
+.welcome-app-name {
+  z-index: 3;
+  font-weight: bold;
+  font-size: 3.5rem;
+  letter-spacing: 3rem;
+  padding-left: 3rem;
+  height: 55%;
+  transition: transform 1.25s cubic-bezier(0.215, 0.61, 0.355, 1), font-size 1.25s cubic-bezier(0.215, 0.61, 0.355, 1), padding-left 1.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transform: perspective(1600px);
+}
+.welcome-slogan {
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 1rem;
+  align-self: end;
+  margin-bottom: -1rem;
+  transition: opacity 1.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+@media screen and (min-width: 1025px) { /* EFFECTS FOR WIDE SCREENS */
+  .welcome-menu:hover { box-shadow: 0 0 75px rgba(0, 0, 0, 0.2), 0 5px 20px rgba(0, 0, 0, 0.2); }
+  .welcome-app-name:hover {
+    font-size: 6.5rem;
+    width: 60%;
+    height: 90%;
+  }
+  .welcome-app-name:hover ~ .welcome-slogan {
+    opacity: 1;
+  }
+  .welcome-bg-shadow-card {
+    width: 60%;
+    height: 90%;
+    background-color: transparent;
+    transition: transform 1.25s cubic-bezier(0.215, 0.61, 0.355, 1), box-shadow 1.25s cubic-bezier(0.215, 0.61, 0.355, 1),
+    box-shadow 1.25s cubic-bezier(0.215, 0.61, 0.355, 1), opacity 1.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: perspective(1600px);
+    z-index: 2;
+  }
+  .welcome-app-name:hover + .welcome-bg-shadow-card {
+    box-shadow: 0 0 75px rgba(0, 0, 0, 0.2), 0 5px 20px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@media screen and (max-width: 1394px) and (min-width: 1025px) { /* EFFECTS FOR MEDIUM SCREENS */
+  .welcome-app-name:hover { letter-spacing: 1.5rem; }
+}
+@media screen and (max-width: 1024px) { /* CSS FOR SMALL SCREENS */
+  .welcome-menu {
+    margin: 1rem 0 0 1rem;
+    transition: box-shadow 0s ease;
+  }
+  .welcome-menu:active { box-shadow: 0 0 75px rgba(0, 0, 0, 0.2), 0 5px 20px rgba(0, 0, 0, 0.2); }
+  .welcome-slogan {
+    letter-spacing: 0.4rem;
+    align-self: center;
+    margin-top: 45%;
+    animation-name: slogan;
+    animation-direction: alternate;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+  @keyframes slogan {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  .welcome-txt, .welcome-owner { font-size: 1.7rem; }
+  .welcome-bg-color-card {
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 75px rgba(0, 0, 0, 0.3), 0 5px 20px rgba(0, 0, 0, 0.3);
+  }
+  .welcome-app-name {
+    font-size: 4rem;
+    letter-spacing: 0.8rem;
+    padding-left: 0;
+  }
+}
