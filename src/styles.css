@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+
+/***** GLOBAL *****/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+html, body { height: 100%; }
+
+/***** CLASSES *****/
+.pointer { cursor: pointer; }
+.nopacity { opacity: 0; }
+
+/***** DISPLAY *****/
+.flex {
+  display: flex;
+  flex-flow: row wrap;
+}
+.grid {
+  display: grid;
+}
+
+/***** SIZING *****/
+.full {
+  height: 100%;
+  width: 100%;
+}
+
+/***** POSITIONING *****/
+.items-center {
+  justify-items: center;
+  align-items: center;
+}
+.content-center {
+  justify-content: center;
+  align-content: center;
+}
+
+/***** GRID POS *****/
+.c1 { grid-column: 1; }
+.c2 { grid-column: 2; }
+.c3 { grid-column: 3; }
+.r1 { grid-row: 1; }
+.r2 { grid-row: 2; }
+.r3 { grid-row: 3; }
+
+/***** FONTS *****/
+@font-face {
+  font-family: "Elephant Outline";
+  src: url("assets/fonts/elep-out.otf") format("opentype");
+}
+@font-face {
+  font-family: "Elephant Full";
+  src: url("assets/fonts/elep-full.ttf") format("truetype");
+}
+.fo { font-family: "Elephant Outline", serif; }
+.ff { font-family: "Elephant Full", serif; }
