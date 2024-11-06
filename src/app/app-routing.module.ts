@@ -5,7 +5,8 @@ import { WelcomeComponent } from './welcolme/welcome.component';
 
 const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent, title: 'Serial30 | Inicio' },
-  { path: '', redirectTo: 'welcome', pathMatch: 'full' }
+  { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+  { path: '**', redirectTo: 'welcome' }
 ];
 
 @NgModule({
