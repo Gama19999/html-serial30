@@ -1,31 +1,41 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { MenuService } from '../services/menu.service';
-import { ShortcutsComponent } from '../shortcuts/shortcuts.component';
+import { strings_es } from '../../assets/strings/strings_es';
+import { environment } from '../../environments/environment';
+import { PublicApiService } from '../services/public-api.service';
+import { ScrollService } from '../services/scroll.service';
+import { LinksComponent } from '../shared/links/links.component';
 
 @Component({
   selector: 'app-about',
+  standalone: false,
   templateUrl: './about.component.html',
   styleUrl: './about.component.css'
 })
 export class AboutComponent implements OnInit, OnDestroy {
-  @ViewChild('aMenu') private aMenu!: ElementRef;
-  private menuOpenSubs!: Subscription;
-  menu: any;
+  private scrollSubs: Subscription | undefined;
+  private apiSubs: Subscription | undefined;
+  protected readonly s = strings_es;
+  protected readonly links = LinksComponent;
+  showToTop: boolean = false;
+  appVersion: string = environment.version;
+  backVersion: string = '';
+  web: string = environment.git_web;
+  api: string = environment.git_api;
 
-  constructor(private menuService: MenuService) {}
+  constructor(private scrollSrv: ScrollService, private publicApiSrv: PublicApiService) {}
 
-  ngOnInit(): void {
-    this.menuOpenSubs = this.menuService.opened.subscribe(value => this.menu = value ? ShortcutsComponent : undefined);
+  ngOnInit() {
+    this.scrollSubs = this.scrollSrv.scrollDown.subscribe(s => this.showToTop = s);
+    this.apiSubs = this.publicApiSrv.getApiVersion().subscribe({
+      next: success => this.backVersion = success.data.toString().split(' ')[1],
+      error: failure => console.error(failure)
+    });
   }
 
-  toggleMenu() {
-    const menuBtn = <HTMLDivElement> this.aMenu.nativeElement;
-    this.menuService.toggleMenu(menuBtn);
-  }
-
-  ngOnDestroy(): void {
-    if (this.menuOpenSubs) this.menuOpenSubs.unsubscribe();
+  ngOnDestroy() {
+    this.scrollSubs?.unsubscribe();
+    this.apiSubs?.unsubscribe();
   }
 }

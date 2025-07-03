@@ -1,6 +1,22 @@
-<section class="full grid about">
-  <i class="menu control pi pi-bars c1 r1 pointer" #aMenu (click)="toggleMenu()"></i>
-  <span class="page-title c1 r1 ff s30bg">afterbeta</span>
-  <app-s30logo></app-s30logo>
-  <ng-container *ngComponentOutlet="menu; inputs: {menuElem: aMenu}"></ng-container>
+<section class="about page-link full flex fn">
+  <ng-container *ngComponentOutlet="links"></ng-container>
+  <div class="page-block full"></div>
+  <app-p-title [title]="s.nav3" class="app-p-title"></app-p-title>
+  <div class="separator"></div>
+  <div class="about-item box-card">Versión web actual: {{ appVersion }}</div>
+  <div class="about-item box-card">Versión de API actual: {{ backVersion }}</div>
+  <div class="separator"></div>
+  <div class="about-item box-card">
+    <a href="{{ web }}" target="_blank">Repositorio web <i class="pi pi-github"></i></a>
+  </div>
+  <div class="about-item box-card">
+    <a href="{{ web }}" target="_blank">Repositorio api <i class="pi pi-github"></i></a>
+  </div>
+  <div class="separator"></div>
+  <div class="about-item box-card">
+    <a href="../privacy-policy" target="_self">{{ s.contact_form81 | text:'capFirst' }} <i class="pi pi-lock"></i></a>
+  </div>
+  <div class="separator"></div>
+  <app-footer></app-footer>
+  <app-to-top *ngIf="showToTop"></app-to-top>
 </section>

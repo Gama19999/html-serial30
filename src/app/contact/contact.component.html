@@ -1,6 +1,102 @@
-<section class="full grid contact">
-  <i class="menu control pi pi-bars c1 r1 pointer" #cMenu (click)="toggleMenu()"></i>
-  <span class="page-title c1 r1 ff s30bg">contacto</span>
-  <app-s30logo></app-s30logo>
-  <ng-container *ngComponentOutlet="menu; inputs: {menuElem: cMenu}"></ng-container>
+<section class="contact page-link full flex fn">
+  <ng-container *ngComponentOutlet="links"></ng-container>
+  <div class="page-block full"></div>
+  <app-p-title [title]="s.nav4" class="app-p-title"></app-p-title>
+  <div class="separator"></div>
+  <div class="contact-img-cont box-shadow left">
+    <img src="{{ getImg('contact-1.webp')}}" alt="contact" class="contact-img full" [ngStyle]="{'object-fit': 'cover'}">
+    <em class="on-hide">
+      <a href="{{ s.freepikl }}" target="_blank"><i class="pi pi-info-circle"></i>&nbsp;{{ s.freepik | text:'uppAll' }}</a>
+    </em>
+  </div>
+  <div class="flex flex-center w45">
+    <div class="card box-card f-width cap-bold">{{ s.contact1 }}&nbsp;&nbsp;<i class="pi pi-comments"></i></div>
+    <div class="card box-card f-width cap-bold">
+      <i class="pi pi-lightbulb"></i>&nbsp;&nbsp;{{ s.contact2 }}&nbsp;&nbsp;<i class="pi pi-sparkles"></i>
+    </div>
+  </div>
+  <div class="flex flex-center w45 left">
+    <div class="card box-card f-width">
+      {{ s.contact3 | text:'capFirst' }}
+      <a href="{{ whatsapp }}" target="_blank">{{ s.whatsapp }}&nbsp;<i class="pi pi-whatsapp"></i></a>&nbsp;o por
+      <a href="{{ mailto }}" target="_blank">{{ s.correo }}&nbsp;<i class="pi pi-envelope"></i></a>
+    </div>
+  </div>
+  <div class="contact-img-cont box-shadow contact-serial30"></div>
+  <div class="separator pre-form"></div>
+  <div class="contact-form-title gradient flex flex-center fo">
+    <span [ngStyle]="{'text-indent': '10px', 'padding.px': 10}">{{ s.contact4 }}</span>
+    <hr class="contact-line box-card">
+  </div>
+  <form class="contact-form linear flex left" [formGroup]="form" (change)="resetPolicy()" (input)="resetPolicy()">
+    <div class="form-control flex">
+      <label for="subject"><i class="pi pi-tag"></i> {{ s.contact_form1 | text:'capFirst' }}</label>
+      <input type="text" formControlName="subject" id="subject" maxlength="50" placeholder="{{ s.contact_form1x | text:'capFirst' }}">
+    </div>
+    <div class="form-control flex">
+      <label for="user"><i class="pi pi-user"></i> {{ s.contact_form2 | text:'capFirst' }}</label>
+      <input type="text" formControlName="user" id="user" maxlength="50" placeholder="{{ s.contact_form2x | text:'capFirst' }}">
+    </div>
+    <div class="form-control flex">
+      <label for="contactType"><i class="pi pi-backward"></i> {{ s.contact_form3 | text:'capFirst' }}</label>
+      <select formControlName="contactType" id="contactType" (change)="showContactDir()">
+        <option value="none">{{ s.contact_form_s | text:'capFirst' }}</option>
+        <option value="wh">{{ s.whatsapp | text:'capFirst' }}</option>
+        <option value="em">{{ s.correo | text:'capFirst' }}</option>
+      </select>
+    </div>
+    <div class="form-control flex" [ngClass]="{'on-hide': form.controls['contactType'].value === 'none'}">
+      <label for="contactDir" *ngIf="form.controls['contactType'].value === 'em'">
+        <i class="pi pi-inbox"></i> {{ s.contact_form41 | text:'capFirst' }}
+      </label>
+      <label for="contactDir" *ngIf="form.controls['contactType'].value === 'wh'">
+        <i class="pi pi-whatsapp"></i> {{ s.contact_form42 | text:'capFirst' }}
+      </label>
+      <input type="email" formControlName="contactDir" id="contactDir" placeholder="{{ s.contact_form41x }}" *ngIf="form.controls['contactType'].value === 'em'">
+      <input type="number" formControlName="contactDir" id="contactDir" placeholder="{{ s.contact_form42x }}" *ngIf="form.controls['contactType'].value === 'wh'">
+    </div>
+    <div class="form-control flex">
+      <label for="project"><i class="pi pi-microchip"></i> {{ s.contact_form5 | text:'capFirst' }}</label>
+      <select formControlName="project" id="project" (change)="form.controls['because'].setValue('none')">
+        <option value="none">{{ s.contact_form51 | text:'capFirst' }}</option>
+        <option value="s3">{{ s.contact_form52 }}</option>
+        <option value="dc">{{ s.contact_form53 }}</option>
+        <option value="ha">{{ s.contact_form54 }}</option>
+        <option value="la">{{ s.contact_form55 }}</option>
+        <option value="br">{{ s.contact_form56 }}</option>
+     </select>
+    </div>
+    <div class="form-control flex">
+      <label for="because"><i class="pi pi-wrench"></i> {{ s.contact_form6 | text:'capFirst' }}</label>
+      <select formControlName="because" id="because">
+        <option value="none">{{ s.contact_form_s | text:'capFirst' }}</option>
+        <option value="pl" *ngIf="form.controls['project'].value === 'none'">{{ s.contact_form64 | text:'capFirst' }}</option>
+        <ng-container *ngIf="form.controls['project'].value !== 'none'">
+          <option value="du">{{ s.contact_form61 | text:'capFirst' }}</option>
+          <option value="co">{{ s.contact_form62 | text:'capFirst' }}</option>
+          <option value="su">{{ s.contact_form63 | text:'capFirst' }}</option>
+          <option value="er">{{ s.contact_form65 | text:'capFirst' }}</option>
+        </ng-container>
+      </select>
+    </div>
+    <div class="form-control flex">
+      <label for="message"><i class="pi pi-pen-to-square"></i> {{ s.contact_form7 | text:'capFirst' }}</label>
+      <textarea formControlName="message" id="message" rows="10"></textarea>
+    </div>
+    <div class="contact-policy flex flex-center">
+      <span>{{ s.contact_form8 | text:'capFirst' }}&nbsp;</span>
+      <a href="../privacy-policy" target="_blank">{{ s.contact_form81 }} <i class="pi pi-lock"></i></a>&nbsp;&nbsp;
+      <div class="policy btn pointer" (click)="togglePolicy()" *ngIf="canShowPolicyBtn()">
+        <i class="pi" [ngClass]="{'pi-expand': !policyAgree, 'pi-check-square': policyAgree}"></i>
+      </div>
+      <label for="policy" [ngStyle]="{'display': 'none'}">{{ s.contact_form81 }}</label>
+      <input type="text" formControlName="policy" id="policy" [ngStyle]="{'display': 'none'}">
+      <div class="btn f-width pointer submit" [ngStyle]="{'text-align': 'center'}" *ngIf="isValidForm()" (click)="submitMessage()">
+        <i class="pi pi-send"></i> {{ s.contact_form9 | text:'capFirst' }}
+      </div>
+    </div>
+  </form>
+  <app-footer></app-footer>
+  <app-to-top *ngIf="showToTop"></app-to-top>
+  <p-toast (onClose)="resetForm($event)"></p-toast>
 </section>

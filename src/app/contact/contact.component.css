@@ -1,4 +1,109 @@
-.contact {
-  grid-template-columns: 1fr;
-  grid-template-rows: 8% 1fr;
+.contact { gap: 10% 3%; }
+.app-p-title {
+  left: calc(50% - 585px / 2);
+  animation: about 1s linear infinite normal forwards paused;
+  animation-delay: calc(var(--scroll) * -1s);
 }
+.contact-img-cont { width: 30%; }
+.contact-img-cont, .contact-img { border-radius: 10px; }
+.contact-img-cont:hover > em {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 0.7rem;
+  opacity: 1;
+  position: relative;
+  bottom: 2rem;
+  left: 1rem;
+}
+.left { margin-left: 6rem; }
+.card {
+  height: fit-content;
+  padding: 1rem;
+  text-align: center;
+}
+.w45 { flex-basis: 45%; }
+.f-width { width: 100%; }
+.cap-bold {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.cap-bold > i { font-weight: bold; }
+.contact-serial30 {
+  background: url("../../assets/images/contact/contact-2.svg") 50% 100% / cover;
+  height: 35%;
+}
+.contact-form-title {
+  flex-direction: column;
+  color: transparent;
+  background-clip: text;
+  flex-basis: 100%;
+  font-size: 2rem;
+  letter-spacing: 0.5rem;
+}
+.contact-line {
+  width: 35%;
+  height: 10px;
+  border: none;
+  border-radius: 10px;
+}
+.contact-form {
+  flex-basis: 77%;
+  padding: 2rem 1rem;
+  border-radius: 10px;
+  justify-content: space-evenly;
+  gap: 2rem 0;
+  box-shadow: var(--sh-form);
+}
+.form-control {
+  flex-direction: column;
+  flex-basis: 45%;
+}
+.contact-policy {
+  flex-basis: 70%;
+  gap: 1rem 0;
+}
+.policy:active, .submit:active { transform: scale(0.9); }
+textarea { padding: 1rem; }
+@media screen and (max-width: 1400px) { /* CSS FOR MEDIUM SCREENS */
+  .app-p-title { margin-left: -1.5%; }
+}
+@media screen and (max-width: 1250px) { /* CSS FOR MEDIUM SCREENS */
+  .app-p-title {
+    margin-left: -3%;
+  }
+}
+@media screen and (max-width: 1025px) { /* CSS FOR SMALL SCREENS */
+  .app-p-title {
+    left: calc(50% - 310px / 2) !important;
+    animation: none;
+  }
+  .page-block, .separator:not(.pre-form) { display: none; }
+  .left { margin-left: 0; }
+  .contact-img-cont { width: 90%; }
+  .w45 {
+    flex-basis: 90%;
+    gap: 5rem 0;
+  }
+  .separator { height: 10%; }
+  .contact-form-title {
+    font-size: 1.9rem;
+    letter-spacing: 0.4rem;
+  }
+  .contact-line { width: 90%; }
+  .contact-form { flex-basis: 90%; }
+  .form-control { flex-basis: 95%; }
+  .policy:hover, .submit:hover { transform: scale(0.9); }
+}
+@keyframes about {
+  from {
+    top: 45%;
+    left: calc(50% - 585px / 2);
+    transform: scale(1);
+  }
+  to {
+    top: 0;
+    left: calc(-7% - 146px / 2);
+    transform: scale(0.25);
+  }
+}
+
