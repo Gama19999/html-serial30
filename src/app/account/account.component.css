@@ -1,0 +1,26 @@
+.account {}
+.app-p-title {
+  left: calc(50% - 443px / 2);
+  animation: about 1s linear infinite normal forwards paused;
+  animation-delay: calc(var(--scroll) * -1s);
+}
+@media screen and (max-width: 1025px) { /* CSS FOR SMALL SCREENS */
+  .app-p-title {
+    left: calc(50% - 236px / 2) !important;
+    animation: none;
+  }
+  .page-block, .separator { display: none; }
+}
+@keyframes about {
+  from {
+    top: 45%;
+    left: calc(50% - 443px / 2);
+    transform: scale(1);
+  }
+  to {
+    top: 0;
+    left: calc(-5% - 111px / 2);
+    transform: scale(0.25);
+  }
+}
+

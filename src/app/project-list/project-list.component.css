@@ -1,0 +1,55 @@
+.project-list { gap: 10% 3%; }
+.app-p-title {
+  left: calc(50% - 656px / 2);
+  animation: project-list 1s linear infinite normal forwards paused;
+  animation-delay: calc(var(--scroll) * -1s);
+}
+.card {
+  flex-basis: 40%;
+  align-self: center;
+  height: fit-content;
+  padding: 1rem 0.5rem;
+}
+.txt-r { text-align: right; }
+.left { margin-left: 5%; }
+@media screen and (max-width: 1400px) { /* CSS FOR MEDIUM SCREENS */
+  .app-p-title { margin-left: -1.5%; }
+  .left { margin-left: 8%; }
+}
+@media screen and (max-width: 1250px) { /* CSS FOR MEDIUM SCREENS */
+  .app-p-title { margin-left: -3%; }
+  .card { flex-basis: 35%; }
+  .txt-r { text-align: justify; }
+}
+@media screen and (max-width: 1025px) { /* CSS FOR SMALL SCREENS */
+  .app-p-title {
+    left: calc(50% - 346px / 2) !important;
+    animation: none;
+  }
+  .page-block, .separator { display: none; }
+  .card { flex-basis: 90%; }
+  .left { margin-left: 0; }
+  .pt0 { order: 1; }
+  .pi0 { order: 2; }
+  .pt1 { order: 3; }
+  .pi1 { order: 4; }
+  .pt2 { order: 5; }
+  .pi2 { order: 6; }
+  .pt3 { order: 7; }
+  .pi3 { order: 8; }
+  .pt4 { order: 9; }
+  .pi4 { order: 10; }
+  app-footer { order: 11; }
+}
+@keyframes project-list {
+  from {
+    top: 45%;
+    left: calc(50% - 656px / 2);
+    transform: scale(1);
+  }
+  to {
+    top: 0;
+    left: calc(-9% - 164px / 2);
+    transform: scale(0.25);
+  }
+}

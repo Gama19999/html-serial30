@@ -1,4 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
 @import "primeicons/primeicons.css";
 
 /***** GLOBAL *****/
@@ -9,88 +8,95 @@
   user-select: none;
 }
 html, body { height: 100%; }
+:root {
+  --purple: #a24bcf;
+  --deg-purple: rgba(162, 75, 207, 0.4);
+  --no-purple: rgba(176, 111, 209, 0.1);
+  --blue: #4b79cf;
+  --deg-blue: rgba(75, 121, 207, 0.3);
+  --no-blue: rgba(116, 150, 212, 0.05);
+  --turquoise: #4bc5cf;
+  --deg-turquoise: rgba(75, 197, 207, 0.2);
+  --opaque: rgba(0, 0, 0, 0.6);
+  --sh-default: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+  --sh-form: rgba(0, 0, 0, 0.45) 0px 20px 110px -30px;
+  --sh-box-card: var(--deg-purple) 5px 5px, var(--deg-blue) 10px 10px, var(--deg-turquoise) 15px 15px, var(--no-purple) 20px 20px, var(--no-blue) 25px 25px;
+  --sh-control: rgba(0, 0, 0, 0.45) 0px 10px 18px -10px;
+  --linear1: linear-gradient(to top left, var(--deg-purple), var(--deg-blue), var(--deg-turquoise));
+}
 
 /***** COMPONENTS *****/
-app-s30logo {
-  grid-column: 1;
-  grid-row: 1;
-  justify-self: end;
+app-links, app-footer { width: 100%; }
+.page-link > app-links {
+  align-self: start;
+  margin-top: 1rem;
 }
-app-shortcuts {
-  z-index: 5;
-  width: 20%;
-  height: 100%;
-  grid-column: 1;
-  grid-row-start: 1;
-  grid-row-end: -1;
-  justify-self: left;
+app-flip-img { width: 30%; }
+app-to-top {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
 }
 
 /***** CLASSES *****/
-.menu {
-  justify-self: left;
-  align-self: start;
-  margin: 2rem 0 0 2rem;
-  z-index: 10;
-}
-@media screen and (max-width: 1024px) { /* CSS FOR SMALL SCREENS */
-  .menu {
-    margin: 1rem 0 0 1rem;
-    transition: box-shadow 0s ease;
-  }
-  .menu:active { box-shadow: 0 0 75px rgba(0, 0, 0, 0.2), 0 5px 20px rgba(0, 0, 0, 0.2); }
-}
-.fit {
-  width: fit-content;
-  height: fit-content;
-}
-.pointer { cursor: pointer; }
-.external { cursor: alias; }
-.nopacity { opacity: 0; }
-.smopacity { opacity: 0.2; }
-.bg-modal { box-shadow: inset 0 0 20px 1000px rgba(0,0,0,0.8) !important; }
-.hidden { display: none; }
-.overflow-y { overflow-y: scroll; }
-.control {
-  font-size: 1.3rem;
-  padding: 0.5rem;
-  border-radius: 50%;
-  background-color: white;
-  transition: box-shadow 1s cubic-bezier(0.215, 0.61, 0.355, 1), transform 1s cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-@media screen and (min-width: 1025px) { /* EFFECTS FOR WIDE SCREENS */
-  .control:hover { box-shadow: 0 0 75px rgba(0, 0, 0, 0.2), 0 5px 20px rgba(0, 0, 0, 0.2); }
-  .bg-modal > .control:hover,
-  .bg-modal app-shortcuts nav .control:hover {
-    box-shadow: none;
-    transform: scale(1.2);
-  }
-}
-.s30bg {
-  background: linear-gradient(230deg, #a24bcf, #4b79cf, #4bc5cf);
-  animation: random 3.5s cubic-bezier(0.46, 0.03, 0.52, 0.96) infinite;
+.gradient {
+  background: linear-gradient(230deg, var(--purple), var(--blue), var(--turquoise));
+  animation: bg-color 3.5s cubic-bezier(0.46, 0.03, 0.52, 0.96) infinite;
   background-size: 400% 400%;
 }
-@keyframes random {
+.linear { background: var(--linear1); }
+.box-shadow { box-shadow: var(--sh-default); }
+.box-card {
+  background: var(--linear1);
+  box-shadow: var(--sh-box-card);
+  border-radius: 10px;
+}
+.pointer { cursor: pointer; }
+.on-hide { opacity: 0; }
+.btn, input, select, textarea {
+  background-color: var(--deg-blue);
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: none;
+  box-shadow: var(--sh-control);
+}
+.btn:focus, input:focus, input:active, select:focus, select:active, textarea:focus, textarea:active { outline: none; }
+.page-link { justify-content: center; }
+.app-p-title {
+  position: fixed;
+  top: 45%;
+  transform: scale(1);
+}
+.separator {
+  width: 100%;
+  height: 20%;
+}
+a {
+  background: linear-gradient(230deg, var(--purple), var(--blue), var(--turquoise));
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+  text-shadow: -1px -1px var(--opaque);
+  text-decoration: none;
+}
+a > .pi { font-weight: bold; }
+input, select, textarea {
+  font-family: "Nunito", serif;
+  font-weight: 600;
+}
+
+/***** MEDIA QUERIES *****/
+@media screen and (max-width: 1024px) { /* CSS FOR SMALL SCREENS */
+  app-flip-img { width: 90%; }
+  .pointer { cursor: default; }
+  .app-p-title { position: unset; }
+}
+
+/***** KEYFRAMES *****/
+@keyframes bg-color {
   0% { background-position: 83% 0; }
   50% { background-position: 18% 100%; }
   100% { background-position: 83% 0; }
-}
-.page-title {
-  font-size: 3rem;
-  font-weight: bold;
-  letter-spacing: 0.5rem;
-  background-clip: text;
-  color: transparent;
-  text-shadow: -3px -2px black;
-  align-self: end;
-  margin-left: 10%;
-}
-@media screen and (max-width: 1024px) { /* CSS FOR SMALL SCREENS */
-  .page-title {
-    font-size: 2rem;
-    margin: 0 0 1% 18%;
-  }
 }
 
 /***** DISPLAY *****/
@@ -98,14 +104,16 @@ app-shortcuts {
   display: flex;
   flex-flow: row wrap;
 }
-.grid {
-  display: grid;
-}
+.grid { display: grid; }
 
 /***** SIZING *****/
 .full {
   height: 100%;
   width: 100%;
+}
+.fit {
+  width: fit-content;
+  height: fit-content;
 }
 
 /***** POSITIONING *****/
@@ -117,16 +125,23 @@ app-shortcuts {
   justify-content: center;
   align-content: center;
 }
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
 
 /***** GRID POS *****/
 .c1 { grid-column: 1; }
 .c2 { grid-column: 2; }
 .c3 { grid-column: 3; }
+.c4 { grid-column: 4; }
+.c5 { grid-column: 5; }
 .r1 { grid-row: 1; }
 .r2 { grid-row: 2; }
 .r3 { grid-row: 3; }
 .r4 { grid-row: 4; }
 .r5 { grid-row: 5; }
+.r6 { grid-row: 6; }
 
 /***** FONTS *****/
 @font-face {
@@ -137,5 +152,23 @@ app-shortcuts {
   font-family: "Elephant Full";
   src: url("assets/fonts/elep-full.ttf") format("truetype");
 }
+@font-face {
+  font-family: "Nunito";
+  src: url("assets/fonts/nunito-var.ttf") format("truetype");
+}
 .fo { font-family: "Elephant Outline", serif; }
 .ff { font-family: "Elephant Full", serif; }
+.fn { font-family: "Nunito", serif; }
+.fo, .ff { font-weight: bold; }
+
+/***** SCROLL BARS *****/
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track {
+  background: transparent;
+  box-shadow: rgba(50, 50, 93, 0.25) 0 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0 18px 36px -18px inset;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(230deg, var(--purple), var(--blue), var(--turquoise));
+  border-radius: 3px;
+}
+

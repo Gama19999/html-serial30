@@ -1,12 +1,8 @@
-<section class="full grid welcome items-center">
-  <i class="menu control pi pi-bars c1 r1 pointer" #wMenu (click)="toggleMenu()"></i>
-  <span class="welcome-txt fo c1 r1">bienvenido a</span>
-  <span class="welcome-bg-color-card s30bg c1 r2 pointer" id="wColorCard"></span>
-  <span class="welcome-app-name flex content-center ff c1 r2 pointer" #wAppName>serial 30</span>
-  <span class="welcome-bg-shadow-card c1 r2 pointer" #wShadowCard></span>
-  <span class="welcome-slogan ff c1 r2 nopacity">el software que deseas</span>
-  <span class="welcome-owner fo c1 r3">
-    <i class="pi pi-ethereum pi-spin"></i> afterbeta <i class="pi pi-ethereum pi-spin"></i>
-  </span>
-  <ng-container *ngComponentOutlet="menu; inputs: {menuElem: wMenu}"></ng-container>
+<section class="welcome full grid items-center">
+  <span class="welcome-t1 fo c1 r1">{{ s.welcome1 }}</span>
+  <span class="welcome-app-name ff c1 r2" #appNameEl>{{ appName }}</span>
+  <span class="welcome-shadow c1 r2" #shadowEl></span>
+  <span class="welcome-gradient gradient c1 r2" id="wColorCard"></span>
+  <span class="welcome-slogan ff c1 r2 on-hide">{{ s.slogan }}</span>
+  <ng-container *ngComponentOutlet="links"></ng-container>
 </section>

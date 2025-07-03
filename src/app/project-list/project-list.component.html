@@ -1,0 +1,18 @@
+<section class="project-list page-link full flex fn">
+  <ng-container *ngComponentOutlet="linksComp"></ng-container>
+  <div class="page-block full"></div>
+  <app-p-title [title]="s.nav2" class="app-p-title"></app-p-title>
+  <div class="separator"></div>
+  <div class="card box-card txt-r left pt0">{{ projects[0].description | text:'capSentence' }}</div>
+  <app-flip-img [view]="'projects'" [project-info]="projects[0]" class="pi0"></app-flip-img>
+  <app-flip-img [view]="'projects'" [project-info]="projects[1]" class="left pi1"></app-flip-img>
+  <div class="card box-card pt1">{{ projects[1].description | text:'capSentence' }}</div>
+  <div class="card box-card txt-r left pt2">{{ projects[2].description | text:'capSentence' }}</div>
+  <app-flip-img [view]="'projects'" [project-info]="projects[2]" class="pi2"></app-flip-img>
+  <app-flip-img [view]="'projects'" [project-info]="projects[3]" class="left pi3"></app-flip-img>
+  <div class="card box-card pt3">{{ projects[3].description | text:'capSentence' }}</div>
+  <div class="card box-card txt-r left pt4">{{ projects[4].description | text:'capSentence' }}</div>
+  <app-flip-img [view]="'projects'" [project-info]="projects[4]" class="pi4"></app-flip-img>
+  <app-footer></app-footer>
+  <app-to-top *ngIf="showToTop"></app-to-top>
+</section>

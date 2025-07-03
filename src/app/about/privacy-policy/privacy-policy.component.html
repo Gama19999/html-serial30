@@ -1,0 +1,37 @@
+<section class="privacy-policy page-link full flex fn">
+  <ng-container *ngComponentOutlet="links"></ng-container>
+  <div class="page-block full"></div>
+  <app-p-title [title]="s.nav6" class="app-p-title"></app-p-title>
+  <div class="separator"></div>
+  <div class="policy-point gradient fo" [innerHTML]="pp.p1"></div>
+  <div class="policy-content left box-card margin-b" [innerHTML]="pp.p1c1"></div>
+  <div class="policy-content left box-card margin-b" [innerHTML]="pp.p1c2"></div>
+  <div class="policy-content left box-card" [innerHTML]="pp.p1c3"></div>
+  <div class="separator"></div>
+  <div class="policy-point gradient fo" [innerHTML]="pp.p2"></div>
+  <div class="policy-content left box-card" [innerHTML]="pp.p2c1"></div>
+  <div class="separator"></div>
+  <div class="policy-point gradient fo" [innerHTML]="pp.p3"></div>
+  <div class="policy-content left box-card" [innerHTML]="pp.p3c1"></div>
+  <div class="separator"></div>
+  <div class="policy-point gradient fo" [innerHTML]="pp.p4"></div>
+  <div class="policy-content left box-card" [ngStyle]="{'text-align': 'center'}" [innerHTML]="pp.p4c1"></div>
+  <div class="separator"></div>
+  <div class="policy-point gradient fo" [innerHTML]="pp.p5"></div>
+  <div class="policy-content left box-card" [innerHTML]="pp.p5c1"></div>
+  <div class="separator"></div>
+  <div class="policy-point gradient fo" [innerHTML]="pp.p6"></div>
+  <div class="policy-content left box-card" [innerHTML]="pp.p6c1"></div>
+  <div class="separator"></div>
+  <div class="policy-point gradient fo" [innerHTML]="pp.p7"></div>
+  <div class="policy-content left box-card" [innerHTML]="pp.p7c1"></div>
+  <div class="separator"></div>
+  <div class="policy-point gradient fo" [innerHTML]="pp.p8"></div>
+  <div class="policy-content left box-card margin-b">
+    Si tienes preguntas o inquietudes sobre esta política de privacidad, <a href="./contact" target="_self">contáctanos</a>
+    o puedes escribirnos a través de <a href="{{ whatsapp }}" target="_blank">{{ s.whatsapp }}&nbsp;<i class="pi pi-whatsapp"></i></a>&nbsp;o por
+    <a href="{{ mailto }}" target="_blank">{{ s.correo }}&nbsp;<i class="pi pi-envelope"></i></a>
+  </div>
+  <app-footer></app-footer>
+  <app-to-top *ngIf="showToTop"></app-to-top>
+</section>

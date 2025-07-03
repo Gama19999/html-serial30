@@ -35,6 +35,11 @@
                 "glob": "**/serial30.webp",
                 "input": "src/assets/images/icon/",
                 "output": "/media/"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets/images/",
+                "output": "/media/images/"
               }
             ],
             "styles": [

@@ -1,0 +1,32 @@
+.links {
+  grid-template-rows: 1fr;
+  grid-auto-columns: 1fr;
+}
+.nav-link {
+  display: flex;
+  max-width: 200px;
+}
+.nav-link:active { transform: scale(1.1); }
+.pi { font-weight: bold; }
+.nav-txt {
+  font-style: normal;
+  letter-spacing: 5px;
+  margin-left: 10px;
+  width: 0;
+  overflow-x: hidden;
+  transition: width 700ms;
+}
+@media screen and (min-width: 1025px) and (pointer: fine) { /* EFFECTS FOR MEDIUM & WIDE SCREENS WITH MOUSE */
+  .nav-link:hover > .nav-txt { width: 100%; }
+  .nav-link:hover > .pi,
+  .nav-link:hover > .nav-txt {
+    color: transparent;
+    background-clip: text;
+  }
+}
+@media screen and (min-width: 1400px) { /* CSS FOR WIDE SCREENS */
+  .pi, .nav-txt { font-size: 1.3rem; }
+}
+@media screen and (max-width: 1024px) { /* CSS FOR SMALL SCREENS */
+  .nav-link:active { transform: scale(1.2); }
+}

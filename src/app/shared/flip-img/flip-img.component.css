@@ -1,0 +1,18 @@
+.img-box { perspective: 1000px; }
+.img-box-inner {
+  position: relative;
+  border-radius: 10px;
+  transition: transform 800ms;
+  transform-style: preserve-3d;
+}
+.img-box:hover .img-box-inner { transform: rotateY(180deg); }
+.front, .back {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.back {
+  position: absolute;
+  top: 0;
+  transform: rotateY(180deg);
+}
+.img { border-radius: 10px; }

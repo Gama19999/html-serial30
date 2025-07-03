@@ -1,0 +1,22 @@
+<nav class="links grid items-center ff">
+  <div class="nav-link flex-center pointer r1 c1" (mouseover)="toggleLinkHover('nav-welcome')" (mouseout)="toggleLinkHover()" (click)="goto('nav-welcome')">
+    <i class="pi pi-home" [ngClass]="{'gradient': linkHovered === 'nav-welcome' && !isMobile}"></i>
+    <em class="nav-txt r1 c1" [ngClass]="{'gradient': linkHovered === 'nav-welcome' && !isMobile}">{{ s.nav1 }}</em>
+  </div>
+  <div class="nav-link flex-center pointer r1 c2" (mouseover)="toggleLinkHover('nav-projects')" (mouseout)="toggleLinkHover()" (click)="goto('nav-projects')">
+    <i class="pi pi-box" [ngClass]="{'gradient': linkHovered === 'nav-projects' && !isMobile}"></i>
+    <em class="nav-txt r1 c2" [ngClass]="{'gradient': linkHovered === 'nav-projects' && !isMobile}">{{ s.nav2 }}</em>
+  </div>
+  <div class="nav-link flex-center pointer r1 c3" (mouseover)="toggleLinkHover('nav-about')" (mouseout)="toggleLinkHover()" (click)="goto('nav-about')">
+    <i class="pi pi-info-circle" [ngClass]="{'gradient': linkHovered === 'nav-about' && !isMobile}"></i>
+    <em class="nav-txt r1 c3" [ngClass]="{'gradient': linkHovered === 'nav-about' && !isMobile}">{{ s.nav3 }}</em>
+  </div>
+  <div class="nav-link flex-center pointer r1 c4" (mouseover)="toggleLinkHover('nav-contact')" (mouseout)="toggleLinkHover()" (click)="goto('nav-contact')">
+    <i class="pi pi-megaphone" [ngClass]="{'gradient': linkHovered === 'nav-contact' && !isMobile}"></i>
+    <em class="nav-txt r1 c4" [ngClass]="{'gradient': linkHovered === 'nav-contact' && !isMobile}">{{ s.nav4 }}</em>
+  </div>
+  <div class="nav-link flex-center pointer r1 c5" (mouseover)="toggleLinkHover('nav-account')" (mouseout)="toggleLinkHover()" (click)="goto('nav-account')">
+    <i class="pi pi-user" [ngClass]="{'gradient': linkHovered === 'nav-account' && !isMobile}"></i>
+    <em class="nav-txt r1 c5" [ngClass]="{'gradient': linkHovered === 'nav-account' && !isMobile}">{{ s.nav5 }}</em>
+  </div>
+</nav>

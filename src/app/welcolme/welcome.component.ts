@@ -1,51 +1,43 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 
-import { MenuService } from '../services/menu.service';
-import { ShortcutsComponent } from '../shortcuts/shortcuts.component';
+import { strings_es } from '../../assets/strings/strings_es';
+import { environment } from '../../environments/environment';
+import { LinksComponent } from '../shared/links/links.component';
+
 
 @Component({
   selector: 'app-welcome',
+  standalone: false,
   templateUrl: './welcome.component.html',
   styleUrl: './welcome.component.css'
 })
-export class WelcomeComponent implements AfterViewInit, OnInit, OnDestroy {
-  @ViewChild('wAppName') private wAppName!: ElementRef;
-  @ViewChild('wShadowCard') private wShadowCard!: ElementRef;
-  @ViewChild('wMenu') private wMenu!: ElementRef;
-  private menuOpenSubs!: Subscription;
-  menu: any;
+export class WelcomeComponent implements AfterViewInit {
+  protected readonly s = strings_es;
+  @ViewChild('appNameEl') protected appNameEl!: ElementRef;
+  @ViewChild('shadowEl') protected shadowEl!: ElementRef;
+  appName: string = environment.appName;
+  links: any = LinksComponent;
 
-  constructor(private menuService: MenuService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.menuOpenSubs = this.menuService.opened.subscribe(value => this.menu = value ? ShortcutsComponent : undefined);
-  }
-
-  ngAfterViewInit(): void {
-    this.wAppName.nativeElement.addEventListener('mousemove', (event: any)=> {
-      const elem = <HTMLElement> this.wAppName.nativeElement;
-      let coorX = ( (elem.clientWidth / 2) - (event.pageX - elem.offsetLeft) );
-      let coorY = ( (elem.clientHeight / 2) - (event.pageY - elem.offsetTop) );
-      let degX  = ( ( coorY / (elem.clientHeight / 2) ) * 20 ); // max. degree = 10
-      let degY  = ( ( coorX / (elem.clientWidth / 2) ) * -20 ); // max. degree = 10
+  ngAfterViewInit() {
+    const anEl = <HTMLSpanElement> this.appNameEl.nativeElement;
+    const shEl = <HTMLSpanElement> this.shadowEl.nativeElement;
+    anEl.addEventListener('mousemove', (event: MouseEvent)=> {
+      let coorX = ((anEl.clientWidth / 2) - (event.pageX - anEl.offsetLeft));
+      let coorY = ((anEl.clientHeight / 2) - (event.pageY - anEl.offsetTop));
+      let degX  = ((coorY / (anEl.clientHeight / 2)) * 20);
+      let degY  = ((coorX / (anEl.clientWidth / 2)) * -20);
       if (window.innerWidth > 1024) {
-        (<HTMLSpanElement> this.wAppName.nativeElement).style.transform = `perspective(1600px) rotateY(${degY+5}deg) rotateX(${degX}deg)`;
-        (<HTMLSpanElement> this.wShadowCard.nativeElement).style.transform = `perspective(1600px) scale(1) rotateY(${degY}deg) rotateX(${degX}deg)`;
+        anEl.style.padding = '8rem 6rem';
+        anEl.style.transform = `perspective(1600px) rotateY(${degY+5}deg) rotateX(${degX}deg)`;
+        shEl.style.transform = `perspective(1600px) scale(1) rotateY(${degY}deg) rotateX(${degX}deg)`;
       }
     });
-    this.wAppName.nativeElement.addEventListener('mouseout', () => {
-      (<HTMLSpanElement> this.wAppName.nativeElement).style.transform = 'perspective(1600px)';
-      (<HTMLSpanElement> this.wShadowCard.nativeElement).style.transform = 'perspective(1600px)';
+    anEl.addEventListener('mouseout', () => {
+      anEl.style.padding = '0';
+      anEl.style.transform = 'perspective(1600px)';
+      shEl.style.transform = 'perspective(1600px)';
     });
-  }
-
-  toggleMenu() {
-    const menuBtn = <HTMLDivElement> this.wMenu.nativeElement;
-    this.menuService.toggleMenu(menuBtn);
-  }
-
-  ngOnDestroy(): void {
-    if (this.menuOpenSubs) this.menuOpenSubs.unsubscribe();
   }
 }

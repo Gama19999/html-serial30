@@ -1,0 +1,13 @@
+<div class="img-box full pointer">
+  <div class="img-box-inner full box-shadow">
+    <div class="front full">
+      <img class="full img" src="{{ getImg() }}" alt="project-list-1">
+    </div>
+    <div class="back full grid items-center" (click)="openDetails($event)">
+      <span><b><i class="pi pi-id-card"></i> {{ s.project1 | text:'capFirst' }} {{ appName }}</b></span>
+      <span><b><i class="pi pi-microchip"></i> {{ s.project2 | text:'capFirst' }} {{ projectInfo.name }}</b></span>
+      <span><b><i class="pi pi-tags"></i> {{ s.project3 | text:'capFirst' }} {{ projectInfo.version }}</b></span>
+      <a href="{{ projectInfo.link }}" target="_blank"><i class="pi pi-globe"></i>&nbsp;{{ s.project4 | text:'capFirst' }}</a>
+    </div>
+  </div>
+</div>

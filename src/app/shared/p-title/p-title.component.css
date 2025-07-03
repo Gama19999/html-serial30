@@ -1,0 +1,16 @@
+.p-title-txt {
+  font-size: 8rem;
+  letter-spacing: 1rem;
+  text-indent: 1rem;
+  color: transparent;
+  background-clip: text;
+}
+.p-title-line {
+  width: 100%;
+  height: 10px;
+  border: none;
+  border-radius: 10px;
+}
+@media screen and (max-width: 1024px) { /* CSS FOR SMALL SCREENS */
+  .p-title-txt { font-size: 3rem; }
+}

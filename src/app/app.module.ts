@@ -1,32 +1,60 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { provideHttpClient } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import Aura from '@primeng/themes/aura';
+import { ToastModule } from 'primeng/toast';
+import { providePrimeNG } from 'primeng/config';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcolme/welcome.component';
-import { ShortcutsComponent } from './shortcuts/shortcuts.component';
-import { S30logoComponent } from './s30logo/s30logo.component';
-import { ProjectsComponent } from './projects/projects.component';
+import { LinksComponent } from './shared/links/links.component';
+import { ProjectListComponent } from './project-list/project-list.component';
 import { AboutComponent } from './about/about.component';
+import { PrivacyPolicyComponent } from './about/privacy-policy/privacy-policy.component';
 import { ContactComponent } from './contact/contact.component';
-import { ItemComponent } from './projects/item/item.component';
+import { AccountComponent } from './account/account.component';
+import { PTitleComponent } from './shared/p-title/p-title.component';
+import { ToTopComponent } from './shared/to-top/to-top.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { TextPipe } from './shared/pipes/text.pipe';
+import { FlipImgComponent } from './shared/flip-img/flip-img.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
-    ShortcutsComponent,
-    S30logoComponent,
-    ProjectsComponent,
+    LinksComponent,
+    ProjectListComponent,
     AboutComponent,
+    PrivacyPolicyComponent,
     ContactComponent,
-    ItemComponent
+    AccountComponent,
+    PTitleComponent,
+    ToTopComponent,
+    FooterComponent,
+    TextPipe,
+    FlipImgComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    ToastModule
   ],
-  providers: [],
+  providers: [
+    provideHttpClient(),
+    providePrimeNG({
+      theme: {
+        preset: Aura,
+        options: { darkModeSelector: 'none' }
+      }
+    })
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
