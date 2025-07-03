@@ -9,11 +9,13 @@
   height: fit-content;
 }
 @media screen and (max-width: 1025px) { /* CSS FOR SMALL SCREENS */
+  .about { gap: 3rem 0; }
   .app-p-title {
     left: calc(50% - 298px / 2) !important;
     animation: none;
   }
   .page-block, .separator { display: none; }
+  app-p-title ~ .about-item { margin-top: 5%; }
   .about-item { flex-basis: 90%; }
 }
 @keyframes about {

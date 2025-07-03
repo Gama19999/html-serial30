@@ -29,11 +29,17 @@
 }
 @media screen and (max-width: 1025px) { /* CSS FOR SMALL SCREENS */
   .app-p-title {
+    margin-top: 10%;
     left: calc(50% - 639px / 2) !important;
     animation: none;
     width: 90%;
   }
-  .page-block, .separator { display: none; }
+  .page-block { display: none; }
+  .left { margin-left: 0; }
+  .policy-point {
+    padding: 2rem 0;
+    letter-spacing: 2px;
+  }
 }
 @keyframes pri-pol {
   from {
